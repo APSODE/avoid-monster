@@ -6,6 +6,7 @@ import sys
 from AvoidMonster import PROJECT_ROOT_PATH
 from datetime import datetime
 
+
 class ErrorChecker:
     def __init__(self, target_func):
         self.func = target_func
@@ -31,13 +32,3 @@ class ErrorChecker:
 
             with open(f"{error_log_dir}", "w", encoding = "utf-8") as error_log_file:
                 json.dump(error_data, error_log_file, indent = 4)
-
-
-
-
-
-
-
-
-
-
