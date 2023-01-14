@@ -1,5 +1,5 @@
-from src.item.ItemBase import ItemBase
-from src.item.ItemTypeEnum import ItemTypeEnum, EquipTypeEnum
+from src.GameFunc.item.ItemBase import ItemBase
+from src.GameFunc.item.ItemTypeEnum import ItemTypeEnum, EquipTypeEnum
 from typing import Dict
 
 
