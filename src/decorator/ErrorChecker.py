@@ -32,3 +32,5 @@ class ErrorChecker:
 
             with open(f"{error_log_dir}", "w", encoding = "utf-8") as error_log_file:
                 json.dump(error_data, error_log_file, indent = 4)
+
+            print("예외 발생!!!, error log를 확인하세요!")
