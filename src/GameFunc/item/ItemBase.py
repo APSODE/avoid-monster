@@ -1,5 +1,5 @@
 from typing import Dict
-from src.item.ItemTypeEnum import ItemTypeEnum
+from src.GameFunc.item.ItemTypeEnum import ItemTypeEnum
 
 class ItemBase:
     def __init__(self,
