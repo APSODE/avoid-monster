@@ -18,6 +18,10 @@ class ComponentContainer:
             "default": tkinter.ttk.Combobox
         }
 
+        self._button = {
+            "default": tkinter.Button
+        }
+
 
 
     @property
@@ -50,6 +54,16 @@ class ComponentContainer:
         for target_key, new_value in value.items():
             self._combo_box[target_key] = new_value
 
+    @property
+    def Button(self) -> Dict[str, Type[tkinter.Button]]:
+        return self._button
+
+    @Button.setter
+    def Button(self, value: Dict[str, Type[tkinter.ttk.Combobox]]):
+        """value = Dict[str, Type[tkinter.button]]"""
+        for target_key, new_value in value.items():
+            self._button[target_key] = new_value
+
     def GetAllData(self) -> dict:
         return {key.replace("_", "", 1): value for key, value in self.__dict__.items()} #dictionary comprehension
 
@@ -81,33 +95,40 @@ class SettingGUI:
         self._master.title = self._game_title
 
     def CreateBaseFrame(self):
-        base_up_frame = tkinter.Frame(self._master)
-        base_up_frame.grid(row = 0, column = 0)
-        base_down_frame = tkinter.Frame(self._master)
-        base_down_frame.grid(row = 1, column = 0)
+        image_frame = tkinter.Frame(self._master)
+        image_frame.grid(row = 0, column = 0, padx = 10, pady = 10)
+
+        setting_frame = tkinter.Frame(self._master)
+        setting_frame.grid(row = 1, column = 0, padx = 10, pady = 10)
+
+        button_frame = tkinter.Frame(self._master)
+        button_frame.grid(row = 2, column = 0, padx = 10, pady = 10)
 
         self._component_container.BaseFrame = {
-            "up": base_up_frame,
-            "down": base_down_frame
+            "game_image": image_frame,
+            "game_setting": setting_frame,
+            "button": button_frame
         }
 
     def CreateLabelFrame(self):
-        up_label_frame = tkinter.LabelFrame(
-            self._component_container.BaseFrame.get("up"),
-            text = "up label frame"
+        setting_label_frame = tkinter.LabelFrame(
+            self._component_container.BaseFrame.get("game_setting"),
+            text = "game setting label frame"
         )
-        up_label_frame.grid(padx = 10, pady = 10)
-
-        down_label_frame = tkinter.LabelFrame(
-            self._component_container.BaseFrame.get("down"),
-            text = "down label frame"
-        )
-        down_label_frame.grid(padx = 10, pady = 10)
+        setting_label_frame.grid(row = 0, column = 0, padx = 10, pady = 10)
 
         self._component_container.LabelFrame = {
-            "up": up_label_frame,
-            "down": down_label_frame
+            "game_setting": setting_label_frame
         }
+
+    def CreateImage(self):
+        start_menu_image = tkinter.PhotoImage(file = "..\\..\\resources\\start_menu.jpg")
+        start_menu_label = tkinter.Label(self._component_container.BaseFrame.get("game_image"), image = start_menu_image)
+        start_menu_label.pack()
+
+    def CreateButton(self):
+        test_btn = tkinter.Button(self._component_container.LabelFrame.get("up"), text = "test btn")
+        test_btn.grid(row = 0, column = 0, padx = 10, pady = 10)
 
     def CreateWindow(self):
         self.SettingResolution()
@@ -117,6 +138,7 @@ class SettingGUI:
 
     def CreateGUI(self):
         self.CreateWindow()
+        self.CreateButton()
         self._master.mainloop()
 
 
