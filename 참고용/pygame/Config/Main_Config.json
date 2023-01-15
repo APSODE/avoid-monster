@@ -1,0 +1,76 @@
+{
+    "CHARACTER": {
+        "PLAYER": {
+            "CHAR_1": {
+                "IMG_DIR": ".\\Class\\C_UNKNOWN_CH\\IMG\\CHAR_1.png",
+                "INFO": {
+                    "PLAYER_NAME": "",
+                    "PLAYER_WIDTH": 60,
+                    "PLAYER_HEIGHT": 62,
+                    "PLAYER_SPEED": 15
+                }
+            },
+            "E_CHAR_1": {
+                "IMG_DIR": ".\\Class\\C_UNKNOWN_CH\\IMG\\E_CHAR_1.png",
+                "INFO": {
+                    "PLAYER_NAME": "",
+                    "PLAYER_WIDTH": 164,
+                    "PLAYER_HEIGHT": 165,
+                    "PLAYER_SPEED": 7
+                }
+            },
+            "CHAR_2": {
+                "IMG_DIR": ".\\Class\\C_UNKNOWN_CH\\IMG\\CHAR_2.png",
+                "INFO": {
+                    "PLAYER_NAME": "",
+                    "PLAYER_WIDTH": 60,
+                    "PLAYER_HEIGHT": 62,
+                    "PLAYER_SPEED": 15
+                }
+            },
+            "CHAR_3": {
+                "IMG_DIR": ".\\Class\\C_UNKNOWN_CH\\IMG\\CHAR_3.png",
+                "INFO": {
+                    "PLAYER_NAME": "",
+                    "PLAYER_WIDTH": 60,
+                    "PLAYER_HEIGHT": 62,
+                    "PLAYER_SPEED": 15
+                }
+            }
+        }
+    },
+    "DISPLAY": {
+        "DISPLAY_1": {
+            "DISPLAY_IMG_DIR": ".\\Class\\C_UNKNOWN_BG\\IMG\\space2.png",
+            "DISPLAY_INFO": {
+                "SCREEN_WIDTH": 1536,
+                "SCREEN_HEIGHT": 864
+            }
+        }
+    },
+    "OBJECT": {
+        "OBJECT_1": {
+            "OBJECT_IMG_DIR": ".\\Class\\C_UNKNOWN_OB\\IMG\\enermy_ob.png",
+            "OBJECT_INFO": {
+                "OBJECT_WIDTH": 80,
+                "OBJECT_HEIGHT": 81,
+                "OBJECT_SPEED": 15,
+                "OBJECT_NAME": ""
+            }
+        },
+        "WEAPON_1": {
+            "OBJECT_IMG_DIR": ".\\Class\\C_UNKNOWN_OB\\IMG\\Bullet.png",
+            "OBJECT_INFO": {
+                "OBJECT_WIDTH": 80,
+                "OBJECT_HEIGHT": 81,
+                "OBJECT_SPEED": 15,
+                "OBJECT_NAME": ""
+            }
+        }
+    },
+    "ICON": {
+        "ICON_IMG_DIR": {
+            "IMG_1": ".\\icon.jpg"
+        }
+    }
+}

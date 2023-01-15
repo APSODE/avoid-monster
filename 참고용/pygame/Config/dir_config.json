@@ -1,0 +1,18 @@
+{
+    "main": {
+        "BACKGROUND_IMG_DIR": "C:\\Users\\Admin\\Downloads\\게임제작-20210527T065727Z-001\\게임제작\\Background\\.png",
+        "OBJECT_IMG_DIR": "C:\\Users\\Admin\\Downloads\\게임제작-20210527T065727Z-001\\게임제작\\Object\\block.png",
+        "CHAR_ING_DIR": "C:\\Users\\Admin\\Downloads\\게임제작-20210527T065727Z-001\\게임제작\\Char_SP\\CHAR_1.png",
+        "ICON_DIR": "C:\\Users\\Admin\\Downloads\\게임제작-20210527T065727Z-001\\게임제작\\icon.jpg"
+    },
+    "CHAR":{
+        "CONFIG_DIR": "C:\\Users\\Admin\\Downloads\\게임제작-20210527T065727Z-001\\게임제작\\Config"
+    },
+    "BACKGROUND":{
+        "CONFIG_DIR": "C:\\Users\\Admin\\Downloads\\게임제작-20210527T065727Z-001\\게임제작\\Config"
+    },
+    "OBJECT":{
+        "CONFIG_DIR": "C:\\Users\\Admin\\Downloads\\게임제작-20210527T065727Z-001\\게임제작\\Config"
+    }
+
+}

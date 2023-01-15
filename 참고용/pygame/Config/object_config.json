@@ -1,0 +1,12 @@
+{
+    "OBJECT_INFO": {
+        "OBJECT_WIDTH": 80,
+        "OBJECT_HEIGHT": 81,
+        "OBJECT_SPEED": 15
+    },
+    "OBJECT_IMG_DIR": {
+        "OBJ_1": "C:\\Users\\Admin\\Desktop\\\uac8c\uc784\uc81c\uc791\\Object\\block.png"
+    },
+    "OBJECT_WIDTH": 240,
+    "OBJECT_HEIGHT": 240
+}
