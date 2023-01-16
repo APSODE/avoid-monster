@@ -19,19 +19,12 @@ class SettingGUI(QDialog, qt_designer_class):
         self.screen_mode_window: QRadioButton
         self.screen_res_hd: QRadioButton
         self.screen_res_fhd: QRadioButton
-        self.setting_ok_btn: QPushButton
-        self.setting_cancle_btn: QPushButton
-
-        # self.screen_mode_full = self.
 
         self.ScreenModeFull.clicked.connect(self.GraphicSetting_ScreenMode)
         self.ScreenModeWindow.clicked.connect(self.GraphicSetting_ScreenMode)
 
         self.ScreenResHd.clicked.connect(self.GraphicSetting_ScreenRes)
         self.ScreenResFhd.clicked.connect(self.GraphicSetting_ScreenRes)
-
-        # self.setting_ok_btn = self.
-
 
     def GraphicSetting_ScreenMode(self):
         if self.ScreenModeFull.isChecked():
