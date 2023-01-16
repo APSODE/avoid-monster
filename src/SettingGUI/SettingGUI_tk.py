@@ -1,7 +1,8 @@
 import tkinter
 import tkinter.ttk
+from PIL import ImageTk, Image
 from typing import Dict, Type
-from src.decorator.ErrorChecker import ErrorChecker
+
 
 
 class ComponentContainer:
@@ -22,7 +23,9 @@ class ComponentContainer:
             "default": tkinter.Button
         }
 
-
+        self._canvas = {
+            "default": tkinter.Canvas
+        }
 
     @property
     def BaseFrame(self) -> Dict[str, Type[tkinter.Frame]]:
@@ -59,8 +62,18 @@ class ComponentContainer:
         return self._button
 
     @Button.setter
-    def Button(self, value: Dict[str, Type[tkinter.ttk.Combobox]]):
+    def Button(self, value: Dict[str, Type[tkinter.Button]]):
         """value = Dict[str, Type[tkinter.button]]"""
+        for target_key, new_value in value.items():
+            self._button[target_key] = new_value
+
+    @property
+    def Canvas(self) -> Dict[str, Type[tkinter.Canvas]]:
+        return self._canvas
+
+    @Canvas.setter
+    def Canvas(self, value: Dict[str, Type[tkinter.Canvas]]):
+        """value = Dict[str, Type[tkinter.Canvas]]"""
         for target_key, new_value in value.items():
             self._button[target_key] = new_value
 
@@ -90,6 +103,7 @@ class SettingGUI:
             f"+{gui_x_position}"
             f"+{gui_y_position}"
         )
+        self._master.resizable(False, False)
 
     def SettingTitle(self):
         self._master.title = self._game_title
@@ -101,13 +115,17 @@ class SettingGUI:
         setting_frame = tkinter.Frame(self._master)
         setting_frame.grid(row = 1, column = 0, padx = 10, pady = 10)
 
-        button_frame = tkinter.Frame(self._master)
-        button_frame.grid(row = 2, column = 0, padx = 10, pady = 10)
+        button_frame_out = tkinter.Frame(self._master)
+        button_frame_out.grid(row = 2, column = 0, padx = 10, pady = 10)
+
+        button_frame_in = tkinter.Frame(button_frame_out)
+        button_frame_in.pack()
 
         self._component_container.BaseFrame = {
             "game_image": image_frame,
             "game_setting": setting_frame,
-            "button": button_frame
+            "button_out": button_frame_out,
+            "button_in": button_frame_in
         }
 
     def CreateLabelFrame(self):
@@ -121,24 +139,43 @@ class SettingGUI:
             "game_setting": setting_label_frame
         }
 
+    def CreateCanvasFrame(self):
+        image_canvas_frame = tkinter.Canvas(self._component_container.BaseFrame.get("game_image"),
+                                            width = 400, height = 300)
+        image_canvas_frame.pack()
+
+        self._component_container.Canvas = {
+            "start_menu_image": image_canvas_frame
+        }
+
     def CreateImage(self):
-        start_menu_image = tkinter.PhotoImage(file = "..\\..\\resources\\start_menu.jpg")
-        start_menu_label = tkinter.Label(self._component_container.BaseFrame.get("game_image"), image = start_menu_image)
-        start_menu_label.pack()
+        image_file = Image.open(f"..\\..\\resources\\start_menu.jpg")
+        start_menu_image = ImageTk.PhotoImage(image_file.resize((400, 300)))
+        # start_menu_image = tkinter.PhotoImage(file = f"..\\..\\resources\\start_menu.png")
+        canvas = self._component_container.Canvas.get("start_menu_image")
+        canvas.create_image()
+        # start_menu_label = tkinter.Label(self._component_container.BaseFrame.get("game_image"), image = start_menu_image)
+        # start_menu_label.pack()
+
+
 
     def CreateButton(self):
-        test_btn = tkinter.Button(self._component_container.LabelFrame.get("up"), text = "test btn")
+        test_btn = tkinter.Button(self._component_container.BaseFrame.get('button_in'), text = "테스트 버튼")
+        # test_btn.place(x = 10, y = 10)
         test_btn.grid(row = 0, column = 0, padx = 10, pady = 10)
 
     def CreateWindow(self):
         self.SettingResolution()
         self.CreateBaseFrame()
         self.CreateLabelFrame()
+        self.CreateImage()
+        self.CreateButton()
+
 
 
     def CreateGUI(self):
         self.CreateWindow()
-        self.CreateButton()
+
         self._master.mainloop()
 
 
