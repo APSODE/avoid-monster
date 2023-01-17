@@ -1,14 +1,14 @@
 from src.GameFunc.item.ItemBase import ItemBase
 from src.GameFunc.item.ItemTypeEnum import ItemTypeEnum, EquipTypeEnum
-from typing import Dict
+from typing import *
 
 
 class EquipmentItem(ItemBase):
     def __init__(self,
-                 name: str = None,
-                 status: Dict[str, int] = None,
-                 item_type: ItemTypeEnum = None,
-                 equipment_type: EquipTypeEnum = None
+                 name: Optional[str] = None,
+                 status: Optional[Dict[str, int]] = None,
+                 item_type: Optional[ItemTypeEnum] = None,
+                 equipment_type: Optional[EquipTypeEnum] = None
                  ):
 
         super(EquipmentItem, self).__init__(
