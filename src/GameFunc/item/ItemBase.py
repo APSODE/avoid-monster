@@ -1,11 +1,11 @@
-from typing import Dict
+from typing import *
 from src.GameFunc.item.ItemTypeEnum import ItemTypeEnum
 
 class ItemBase:
     def __init__(self,
-                 name: str = None,
-                 status: Dict[str, int] = None,
-                 item_type: ItemTypeEnum = None):
+                 name: Optional[str] = None,
+                 status: Optional[Dict[str, int]] = None,
+                 item_type: Optional[ItemTypeEnum] = None):
 
         self._name = name if name is not None else "test item"
 
