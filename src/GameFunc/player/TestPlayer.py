@@ -5,9 +5,8 @@ import pygame
 class PlayerSprite(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.surf = pygame.Surface((50, 50))
-        self.surf.fill((255, 255, 255))
-        self.rect = self.surf.get_rect()
+        # self.sprite = pygame.image.load("D:\\PROJECT\\Python\\AvoidMonster\\참고용\\pygame\\Class\\C_UNKNOWN_CH\\IMG\\CHAR_3.png")
+        self.sprite = pygame.image.load(".\\resources\\CHAR_3.png")
 
 
 class TestPlayer(PlayerBase):
