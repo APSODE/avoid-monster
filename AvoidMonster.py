@@ -17,7 +17,8 @@ class AvoidMonster:
         self._screen: pygame.Surface
 
     def StartGame(self) -> None:
-        if self._setting_manager.DisplayManager.DisplayData.ContinueInfo:
+        # print(f"continue : {self._setting_manager.DisplayManager.DisplayData.ContinueInfo}")
+        if self._setting_manager.DisplayManager.DisplayData.ContinueInfo is False:
             return None
         else:
             pygame.init()
