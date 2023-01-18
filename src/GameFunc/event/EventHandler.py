@@ -1,3 +1,4 @@
+from typing import *
 from pygame.event import Event
 from pygame import *
 from src.GameFunc.CustomException.AvoidMonster_CE import GameQuitException
@@ -58,7 +59,7 @@ class EventHandler:
             raise GameQuitException()
 
     @staticmethod
-    def _KeyNumberChanger(k_value: int) -> int:
+    def _KeyNumberChanger(k_value: int) -> Optional[int]:
         if k_value == 82:
             return K_UP
         elif k_value == 81:
@@ -67,6 +68,10 @@ class EventHandler:
             return K_RIGHT
         elif k_value == 80:
             return K_LEFT
+        else:
+            return None
+
+
 
     def _HandleKeyEvent(self):
         pressed = key.get_pressed() #동시 입력 대비를 위한 키바인딩
@@ -75,7 +80,7 @@ class EventHandler:
         event_key = [self._KeyNumberChanger(k_value = k) for k,v in enumerate(pressed) if v]
 
         # print(MoveEvent.GetMoveDirection(event_key))
-        if event_key != []: # 생성된 event_key 리스트가 비어있는지 확인
+        if event_key != [] and None not in event_key: # 생성된 event_key 리스트가 비어있는지 확인
             if event_key < [K_UP, K_DOWN, K_RIGHT, K_LEFT]: # 리스트 부분집합 여부로 동시 키입력 확인
                 # print("작동")
                 self._HandleMoveEvent(
