@@ -27,9 +27,6 @@ class AvoidMonster:
             player.MoveData.X_Pos = 250 # 테스트용 위치
             player.MoveData.Y_Pos = 250 # 테스트용 위치
 
-            # screen = pygame.display.set_mode((500, 500))
-
-
             while self._work_status:
                 for occurred_event in pygame.event.get():
                     try:
@@ -47,12 +44,9 @@ class AvoidMonster:
                 self._screen.blit(player.PlayerSprite.sprite, (player.MoveData.X_Pos, player.MoveData.Y_Pos))
                 pygame.display.update()
 
-
     def _ApplyGameSetting(self) -> None:
         self._screen = self._setting_manager.ApplySetting_display()
         SettingManager.ApplySetting_key()
-
-
 
 
 if __name__ == '__main__':
