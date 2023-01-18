@@ -5,8 +5,8 @@ import sys
 import os
 
 
-
 qt_designer_class = uic.loadUiType(uifile = f"{os.path.dirname(os.path.abspath(__file__))}\\SettingGUI_qt.ui")[0]
+
 
 class SettingGUI(QDialog, qt_designer_class):
     def __init__(self):
@@ -15,7 +15,7 @@ class SettingGUI(QDialog, qt_designer_class):
             "sc_res": "hd", #default value
             "continue": False
         }
-        super().__init__()
+        super(SettingGUI, self).__init__()
         self.setupUi(self)
 
         # self.OkButton.clicked.connect(self._ContinueCheck)
