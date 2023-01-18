@@ -34,7 +34,8 @@ class AvoidMonster:
                         EventHandler(
                             event = occurred_event,
                             object_dict = {
-                                "player": player
+                                "player": player,
+                                "display": self._setting_manager.DisplayManager.DisplayData
                             }
                         )
 
