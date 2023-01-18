@@ -1,8 +1,8 @@
 from src.GameFunc.settings.SettingManager import SettingManager
-from src.SettingGUI.SettingGUI_qt import SettingGUI
 from src.GameFunc.event.EventHandler import EventHandler
 from src.GameFunc.CustomException.AvoidMonster_CE import GameQuitException
 from src.GameFunc.player.TestPlayer import TestPlayer
+
 
 import os
 import pygame
@@ -12,23 +12,25 @@ PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__)) #프로젝트 루
 
 class AvoidMonster:
     def __init__(self):
-        self.gui_data = SettingGUI.Start()
-        self.work_status = True
+        self._work_status = True
+        self._setting_manager = SettingManager(root_path = PROJECT_ROOT_PATH)
+        self._screen: pygame.Surface
 
     def StartGame(self) -> None:
-        if self.gui_data.get("continue") is False:
+        if self._setting_manager.DisplayManager.DisplayData.ContinueInfo:
             return None
         else:
             pygame.init()
-            # self._ApplyGameSetting(instance = pygame)
-            screen = pygame.display.set_mode((500, 500))
-            pygame.display.set_caption("Avoid Moster | ver1.0")
+            self._ApplyGameSetting()
 
             player = TestPlayer()
             player.MoveData.X_Pos = 250
             player.MoveData.Y_Pos = 250
 
-            while self.work_status:
+            # screen = pygame.display.set_mode((500, 500))
+
+
+            while self._work_status:
                 for occurred_event in pygame.event.get():
                     try:
                         EventHandler(
@@ -39,25 +41,18 @@ class AvoidMonster:
                         )
 
                     except GameQuitException:
-                        self.work_status = False
+                        self._work_status = False
 
-                screen.blit(player.PlayerSprite.surf, (player.MoveData.X_Pos, player.MoveData.Y_Pos))
+                self._screen.blit(self._setting_manager.DisplayManager.DisplayData.ScreenImage, (0, 0))
+                self._screen.blit(player.PlayerSprite.sprite, (player.MoveData.X_Pos, player.MoveData.Y_Pos))
                 pygame.display.update()
 
-    @staticmethod
-    def _ApplyGameSetting(instance) -> None:
-        SettingManager.ApplySetting_display(instance)
 
-    # @staticmethod
-    # def StartGame() -> None:
-    #     game_instance = pygame
-    #     game_instance.init()
-    #     SettingManager.ApplySetting_display(
-    #         instance = game_instance
-    #     )
-    #
-    #     while True:
-    #         game_instance.event.get()
+    def _ApplyGameSetting(self) -> None:
+        self._screen = self._setting_manager.ApplySetting_display()
+        SettingManager.ApplySetting_key()
+
+
 
 
 if __name__ == '__main__':
