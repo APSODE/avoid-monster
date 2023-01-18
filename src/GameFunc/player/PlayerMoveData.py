@@ -40,7 +40,7 @@ class PlayerMoveData:
         self._mv_x = mv_data.get("x") if mv_data is not None else 0
         self._mv_y = mv_data.get("y") if mv_data is not None else 0
 
-        self._speed = speed if speed is not None else 1
+        self._speed = speed if speed is not None else 10 #테스트를 위해 속도 수정  ||  1(기존) -> 10(수정후)
 
         self._direction = direction if direction is not None else DirectionEnum.UP
 
