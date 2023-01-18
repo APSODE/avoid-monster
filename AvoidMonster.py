@@ -24,8 +24,8 @@ class AvoidMonster:
             self._ApplyGameSetting()
 
             player = TestPlayer()
-            player.MoveData.X_Pos = 250
-            player.MoveData.Y_Pos = 250
+            player.MoveData.X_Pos = 250 # 테스트용 위치
+            player.MoveData.Y_Pos = 250 # 테스트용 위치
 
             # screen = pygame.display.set_mode((500, 500))
 
