@@ -7,6 +7,7 @@ class PlayerSprite(pygame.sprite.Sprite):
         super().__init__()
         # self.sprite = pygame.image.load("D:\\PROJECT\\Python\\AvoidMonster\\참고용\\pygame\\Class\\C_UNKNOWN_CH\\IMG\\CHAR_3.png")
         self.sprite = pygame.image.load(".\\resources\\CHAR_3.png")
+        self.size = self.sprite.get_size()
 
 
 class TestPlayer(PlayerBase):
