@@ -88,7 +88,7 @@ class EventHandler:
                 )
 
 
-            elif event_key in {K_q, K_w, K_e, K_r}:
+            elif event_key in [K_q, K_w, K_e, K_r]:
                 self._HandleItemUseEvent()
 
     def _HandleMoveEvent(self, direction: DirectionEnum):
