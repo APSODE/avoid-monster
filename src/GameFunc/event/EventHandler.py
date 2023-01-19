@@ -69,7 +69,7 @@ class EventHandler:
         elif k_value == 80:
             return K_LEFT
         else:
-            return None
+            return None # undefined key input
 
 
 
@@ -104,21 +104,3 @@ class EventHandler:
 
     def _HandleQuitEvent(self) -> bool:
         return True
-
-    # @staticmethod
-    # def KeyEvent(game_event, event_type):
-    #     """
-    #     :param game_instance: AvoidMonster.py의 게임 인스턴스를 전달받는 파라미터
-    #     :param game_event: AvoidMonster.py의 게임 인스턴스 안에서 발생하는 이벤트
-    #     :return:
-    #     """
-    #     event_type = game_event.type
-    #
-    #     if event_type == game_instance.KEYDOWN:
-    #         event_key = game_event.key
-    #
-    #         if event_key in [game_instance.K_UP, game_instance.K_DOWN, game_instance.K_RIGHT, game_instance.K_LEFT]:
-    #             if
-    #
-    #
-
