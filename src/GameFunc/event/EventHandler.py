@@ -2,8 +2,7 @@ from typing import *
 from pygame.event import Event
 from pygame import *
 from src.GameFunc.CustomException.AvoidMonster_CE import GameQuitException
-from src.GameFunc.player.PlayerManager import PlayerManager
-from src.GameFunc.player.TestPlayer import TestPlayer
+from src.GameFunc.container.ObjectContainer import ObjectContainer
 from src.GameFunc.player.PlayerMoveData import DirectionEnum
 
 
@@ -44,10 +43,10 @@ class MoveEvent:
 
 
 class EventHandler:
-    def __init__(self, event: Event, object_dict: dict):
+    def __init__(self, event: Event, object_container: ObjectContainer):
         self._event = event
         self._event_type = event.type
-        self._object_dict = object_dict
+        self._object_container = object_container
 
         self._CheckEvent()
 
@@ -71,8 +70,6 @@ class EventHandler:
         else:
             return None # undefined key input
 
-
-
     def _HandleKeyEvent(self):
         pressed = key.get_pressed() #동시 입력 대비를 위한 키바인딩
 
@@ -87,17 +84,17 @@ class EventHandler:
                     direction = MoveEvent.GetMoveDirection(event_key)
                 )
 
-
             elif event_key in [K_q, K_w, K_e, K_r]:
                 self._HandleItemUseEvent()
 
     def _HandleMoveEvent(self, direction: DirectionEnum):
-        player_manager = PlayerManager(self._object_dict.get("player"))
+        player_manager = self._object_container.PlayerManager
         player_manager.MovePlayer(
+            #TODO player object의 name을 자동으로 전달하는 방법을 생각해야 함
+            player_object = self._object_container.PlayerManager.PlayerContainer.get("test_player_object"),
             direction = direction,
-            display_res = self._object_dict.get("display").ScreenRes
+            display_res = self._object_container.DisplayManager.DisplayData.ScreenRes
         )
-
 
     def _HandleItemUseEvent(self):
         pass
