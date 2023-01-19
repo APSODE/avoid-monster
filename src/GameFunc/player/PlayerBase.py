@@ -1,17 +1,20 @@
 from typing import *
+from abc import *
 from src.GameFunc.player.PlayerMoveData import PlayerMoveData
 from src.GameFunc.item.EquipmentItem import EquipmentItem
 
 
-
 class PlayerBase:
     def __init__(self,
+                 obj_name: str,
                  mv_data: Optional[PlayerMoveData] = None,
                  element: Optional[str] = None,
                  equipment: Optional[EquipmentItem] = None,
                  status: Optional[dict] = None
                  # skill: Optional[]
                 ):
+
+        self._object_name = obj_name
 
         self._player_move_data = mv_data if mv_data is not None else PlayerMoveData()
         self._element = element if element is not None else "test element"
@@ -25,6 +28,11 @@ class PlayerBase:
                 "defense": 10,
                 "this status is test status": 0
             }
+
+    @property
+    def ObjectName(self) -> str:
+        # print(f"object_name : {self._object_name}")
+        return self._object_name
 
     @property
     def MoveData(self) -> PlayerMoveData:
