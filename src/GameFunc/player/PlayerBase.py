@@ -1,6 +1,7 @@
 from typing import *
 from abc import *
 from src.GameFunc.player.PlayerMoveData import PlayerMoveData
+from src.GameFunc.player.PlayerSprite import PlayerSprite
 from src.GameFunc.item.EquipmentItem import EquipmentItem
 
 
@@ -10,15 +11,17 @@ class PlayerBase:
                  mv_data: Optional[PlayerMoveData] = None,
                  element: Optional[str] = None,
                  equipment: Optional[EquipmentItem] = None,
-                 status: Optional[dict] = None
+                 status: Optional[dict] = None,
+                 sprite: Optional[PlayerSprite] = None
                  # skill: Optional[]
-                ):
+                 ):
 
         self._object_name = obj_name
 
         self._player_move_data = mv_data if mv_data is not None else PlayerMoveData()
         self._element = element if element is not None else "test element"
         self._equipment = equipment if equipment is not None else EquipmentItem()
+        self._sprite = sprite if sprite is not None else PlayerSprite()
 
         if status is not None:
             self._status = status
@@ -62,6 +65,14 @@ class PlayerBase:
     @Status.setter
     def Status(self, value: Dict[str, int]):
         self._status = value
+
+    @property
+    def Sprite(self) -> PlayerSprite:
+        return self._sprite
+
+    @Sprite.setter
+    def Sprite(self, value: PlayerSprite):
+        self._sprite = value
 
     def GetAllData(self) -> dict:
         return {key.replace("_", "", 1): value for key, value in self.__dict__.items()}
