@@ -4,8 +4,8 @@ from src.SettingGUI.SettingGUI_qt import SettingGUI
 import pygame
 
 class SettingManager:
-    def __init__(self, root_path: str):
-        self._display_manager = DisplayManager(gui_data = SettingGUI.Start(), root_path = root_path)
+    def __init__(self, dp_manager: DisplayManager):
+        self._display_manager = dp_manager
 
 
     @property
