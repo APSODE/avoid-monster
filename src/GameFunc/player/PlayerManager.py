@@ -1,23 +1,18 @@
 from typing import *
 from src.decorator.ErrorChecker import ErrorChecker
-from src.GameFunc.player.PlayerMoveData import DirectionEnum
+from src.GameFunc.enum.AvoidMoster_Enum import DirectionEnum
 from src.GameFunc.player.PlayerBase import PlayerBase
 from src.GameFunc.player.TestPlayer import TestPlayer
 from src.GameFunc.display.DisplayData import DisplayData, DisplayResolution
 
 
 class PlayerManager:
-    def __init__(self):
-        self._player_container = {
-
-        }
-
-    def AddPlayerObjectToContainer(self, player_object: PlayerBase):
-        self._player_container[player_object.ObjectName] = player_object
+    def __init__(self, player_object: Optional[PlayerBase] = None):
+        self._player_object = player_object if player_object is not None else TestPlayer(object_name = "test player")
 
     @property
-    def PlayerContainer(self) -> Dict[str, PlayerBase]:
-        return self._player_container
+    def PlayerObject(self) -> PlayerBase:
+        return self._player_object
 
     @staticmethod
     def MovePlayer(player_object: Optional[TestPlayer], direction: DirectionEnum, display_res: DisplayResolution):
