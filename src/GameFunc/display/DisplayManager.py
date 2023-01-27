@@ -1,5 +1,11 @@
 from typing import *
 from src.GameFunc.display.DisplayData import DisplayData, DisplayResolution
+from src.GameFunc.player.PlayerBase import PlayerBase
+
+
+import pygame
+
+DOT = TypeVar("DOT", PlayerBase, DisplayData)
 
 
 class DisplayManager:
@@ -13,6 +19,18 @@ class DisplayManager:
     @property
     def DisplayData(self) -> DisplayData:
         return self._display_data_object
+
+    def DrawObject(self, screen: pygame.Surface, target_objects: List[DOT]):
+        for target_object in target_objects:
+            if isinstance(target_object, PlayerBase):
+                screen.blit(target_object.Sprite.sprite_sf, (target_object.MoveData.X_Pos, target_object.MoveData.Y_Pos))
+
+            elif isinstance(target_object, DisplayData):
+                screen.blit(target_object.ScreenImage, (0, 0))
+
+
+
+
 
 
 
