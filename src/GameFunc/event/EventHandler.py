@@ -1,9 +1,9 @@
 from typing import *
 from pygame.event import Event
 from pygame import *
-from src.GameFunc.CustomException.AvoidMonster_CE import GameQuitException
+from src.GameFunc.custom_exception.AvoidMonster_CE import GameQuitException
 from src.GameFunc.container.ObjectContainer import ObjectContainer
-from src.GameFunc.player.PlayerMoveData import DirectionEnum
+from src.GameFunc.enum.AvoidMoster_Enum import DirectionEnum
 
 
 class MoveEvent:
@@ -83,18 +83,26 @@ class EventHandler:
                 self._HandleMoveEvent(
                     direction = MoveEvent.GetMoveDirection(event_key)
                 )
+                # TODO 플레이어의 애니메이션을 보여주기위해서 전체적인 코드 변경이 필요함
+                if self._event_type == K_UP:
+                    player_manager = self._object_container.PlayerManager
+                    player_manager.PlayerObject.Sprite.StandingAnimation()
 
             elif event_key in [K_q, K_w, K_e, K_r]:
                 self._HandleItemUseEvent()
 
+        # elif not event_key:
+
+
     def _HandleMoveEvent(self, direction: DirectionEnum):
         player_manager = self._object_container.PlayerManager
         player_manager.MovePlayer(
-            #TODO player object의 name을 자동으로 전달하는 방법을 생각해야 함
-            player_object = self._object_container.PlayerManager.PlayerContainer.get("test_player_object"),
+            player_object = self._object_container.PlayerManager.PlayerObject,
             direction = direction,
             display_res = self._object_container.DisplayManager.DisplayData.ScreenRes
         )
+        # print("작동")
+
 
     def _HandleItemUseEvent(self):
         pass
