@@ -82,16 +82,9 @@ class EventHandler:
                 self._HandleMoveEvent(
                     direction = MoveEvent.GetMoveDirection(event_key)
                 )
-                # TODO 플레이어의 애니메이션을 보여주기위해서 전체적인 코드 변경이 필요함
-                if self._event_type == K_UP:
-                    player_manager = self._object_container.PlayerManager
-                    player_manager.PlayerObject.Sprite.StandingAnimation()
 
             elif event_key in [K_q, K_w, K_e, K_r]:
                 self._HandleItemUseEvent()
-
-        # elif not event_key:
-
 
     def _HandleMoveEvent(self, direction: DirectionEnum):
         player_manager = self._object_container.PlayerManager
@@ -100,8 +93,6 @@ class EventHandler:
             direction = direction,
             display_res = self._object_container.DisplayManager.DisplayData.ScreenRes
         )
-        # print("작동")
-
 
     def _HandleItemUseEvent(self):
         pass
