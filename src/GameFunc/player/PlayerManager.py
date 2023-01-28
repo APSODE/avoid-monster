@@ -25,8 +25,9 @@ class PlayerManager:
         player_x_pos = player_object.MoveData.X_Pos
         player_y_pos = player_object.MoveData.Y_Pos
 
-        x_pos_check = 0 <= player_x_pos + player_mv_x <= display_res.width - player_object.Sprite.size[0] # 스크린 사이즈 경계 침범 체크
-        y_pos_check = 0 <= player_y_pos + player_mv_y <= display_res.height - player_object.Sprite.size[1] # 스크린 사이즈 경계 침범 체크
+        # 스크린 사이즈 경계 침범 체크
+        x_pos_check = 0 <= player_x_pos + player_mv_x <= display_res.width - player_object.Sprite.size[0]
+        y_pos_check = 0 <= player_y_pos + player_mv_y <= display_res.height - player_object.Sprite.size[1]
 
         if x_pos_check and y_pos_check:
             player_object.Sprite.WalkAnimation() #TODO 플레이어 애니메이션을 한곳에서 관리하도록 해야함
