@@ -31,6 +31,7 @@ class DisplayManager:
                         target_object.MoveData.Y_Pos
                     )
                 )
+                # 정지&움직임 상태 변수가 True일 경우 기본값인 False로 전환
                 if target_object.MoveData.MovingStatus:
                     target_object.MoveData.MovingStatus = False
 
