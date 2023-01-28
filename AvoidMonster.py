@@ -1,5 +1,4 @@
 from src.GameFunc.custom_exception.AvoidMonster_CE import GameQuitException
-from src.GameFunc.player.TestPlayer import TestPlayer
 
 
 import os
@@ -37,9 +36,6 @@ class AvoidMonster:
                     except GameQuitException:
                         self._work_status = False
 
-                # self._screen.blit(self._object_container.DisplayManager.DisplayData.ScreenImage, (0, 0))
-                # self._screen.blit(player.Sprite.sprite_sf, (player.MoveData.X_Pos, player.MoveData.Y_Pos))
-
                 draw_target_object = [
                     self._object_container.DisplayManager.DisplayData,
                     player
@@ -48,7 +44,6 @@ class AvoidMonster:
                     target_objects = draw_target_object,
                     screen = self._screen
                 )
-                pygame.display.update()
 
 
 
