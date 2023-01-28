@@ -4,7 +4,7 @@ from src.GameFunc.custom_exception.AvoidMonster_CE import GameQuitException
 import os
 import pygame
 
-PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__)) #프로젝트 루트의 절대 경로
+PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))  # 프로젝트 루트의 절대 경로
 
 
 class AvoidMonster:
