@@ -30,7 +30,7 @@ class PlayerManager:
         y_pos_check = 0 <= player_y_pos + player_mv_y <= display_res.height - player_object.Sprite.size[1]
 
         if x_pos_check and y_pos_check:
-            player_object.Sprite.WalkAnimation() #TODO 플레이어 애니메이션을 한곳에서 관리하도록 해야함
+            player_object.MoveData.MovingStatus = True
             player_object.MoveData.X_Move = player_speed * direction.x_op
             player_object.MoveData.Y_Move = player_speed * direction.y_op
 
