@@ -1,5 +1,4 @@
 from typing import *
-from abc import abstractmethod
 from src.GameFunc.player.PlayerMoveData import PlayerMoveData
 from src.GameFunc.player.PlayerSprite import PlayerSprite
 from src.GameFunc.item.EquipmentItem import EquipmentItem
@@ -76,7 +75,3 @@ class PlayerBase:
 
     def GetAllData(self) -> dict:
         return {key.replace("_", "", 1): value for key, value in self.__dict__.items()}
-
-    @abstractmethod
-    def UpdateSprite(self):
-        pass
