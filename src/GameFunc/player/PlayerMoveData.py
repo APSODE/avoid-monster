@@ -12,6 +12,8 @@ class PlayerMoveData:
 
         """pos_data ==> x, y를 key로 가지고 value에 int타입의 값을 가진다"""
 
+        self._moving_status = False
+
         self._x_pos = pos_data.get("x") if pos_data is not None else 0
         self._y_pos = pos_data.get("y") if pos_data is not None else 0
 
@@ -69,6 +71,14 @@ class PlayerMoveData:
     @Direction.setter
     def Direction(self, value: DirectionEnum):
         self._direction = value
+
+    @property
+    def MovingStatus(self) -> bool:
+        return self._moving_status
+
+    @MovingStatus.setter
+    def MovingStatus(self, value: bool):
+        self._moving_status = value
 
     def GetAllData(self) -> dict:
         return {key.replace("_", "", 1): value for key, value in self.__dict__.items()}
