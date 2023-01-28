@@ -20,7 +20,8 @@ class DisplayManager:
     def DisplayData(self) -> DisplayData:
         return self._display_data_object
 
-    def DrawObject(self, screen: pygame.Surface, target_objects: List[DOT]):
+    @staticmethod
+    def DrawObject(screen: pygame.Surface, target_objects: List[DOT]):
         for target_object in target_objects:
             if isinstance(target_object, PlayerBase):
                 target_object.Sprite.UpdateSprite(move_data = target_object.MoveData)

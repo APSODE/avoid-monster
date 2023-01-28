@@ -1,4 +1,5 @@
 from src.GameFunc.custom_exception.AvoidMonster_CE import GameQuitException
+from src.GameFunc.display.DisplayManager import DisplayManager
 
 
 import os
@@ -40,7 +41,7 @@ class AvoidMonster:
                     self._object_container.DisplayManager.DisplayData,
                     player
                 ]
-                self._object_container.DisplayManager.DrawObject(
+                DisplayManager.DrawObject(
                     target_objects = draw_target_object,
                     screen = self._screen
                 )
