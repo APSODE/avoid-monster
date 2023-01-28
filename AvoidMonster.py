@@ -45,6 +45,7 @@ class AvoidMonster:
                     screen = self._screen
                 )
 
+                self._clock.tick(60)  # 60프레임
 
 
 if __name__ == '__main__':
