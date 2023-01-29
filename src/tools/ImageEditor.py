@@ -48,13 +48,13 @@ class ImageEditor:
 
 if __name__ == '__main__':
     IE = ImageEditor(
-        image_dir = "..\\..\\스프라이트\\idle sheet-Sheet.png"
+        image_dir = "..\\..\\스프라이트\\red hood itch free Copy-Sheet.png"
     )
 
     # IE.EditSize(size = (100, 100)).save("xptmxm.png")
     count = 1
-    for edited_image in IE.Crop(part_amount = (18, 1)):
-        edited_image.save(f"..\\..\\resources\\player\\standing\\standing_{count}.png")
+    for edited_image in IE.Crop(part_amount = (12, 11)):
+        edited_image.save(f"..\\..\\resources\\test\\test_{count}.png")
         count += 1
 
 

@@ -41,7 +41,7 @@ class PlayerSprite(pygame.sprite.Sprite):
 
         now_game_tick = pygame.time.get_ticks()
 
-        if self._SpriteUpdateTimeCheck(now_tick=now_game_tick):
+        if self._SpriteUpdateTimeCheck(now_tick = now_game_tick):
             resource_dir += f"{self._sprite_num_data.get(current_sprite_num_key)}.png"
             current_sprite_image = pygame.image.load(resource_dir)
             self.sprite_sf = pygame.transform.flip(

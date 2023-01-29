@@ -34,6 +34,7 @@ class EquipmentItem(ItemBase):
                f"equipment type : {self._equipment_type}\n" \
                f"\n"
 
+
 if __name__ == '__main__':
     EI_OBJ = EquipmentItem()
     print(EI_OBJ)

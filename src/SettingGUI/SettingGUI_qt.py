@@ -11,15 +11,13 @@ qt_designer_class = uic.loadUiType(uifile = f"{os.path.dirname(os.path.abspath(_
 class SettingGUI(QDialog, qt_designer_class):
     def __init__(self):
         self._setting_data = {
-            "sc_mode": "window", #default value
-            "sc_res": "hd", #default value
+            "sc_mode": "window",  # default value
+            "sc_res": "hd",  # default value
             "continue": False
         }
         super(SettingGUI, self).__init__()
         self.setupUi(self)
 
-        # self.OkButton.clicked.connect(self._ContinueCheck)
-        # self.CancleButton.clicked.connect(self._ContinueCheck)
         self.OkCancleButtonBox.accepted.connect(self._ContinueCheck_Accept)
         self.OkCancleButtonBox.rejected.connect(self._ContinueCheck_Reject)
 
@@ -49,7 +47,6 @@ class SettingGUI(QDialog, qt_designer_class):
     def _ContinueCheck_Reject(self):
         self._setting_data["continue"] = False
 
-
     def CheckData(self):
         for key, value in self._setting_data.items():
             print(f"{key} : {value}")
@@ -66,6 +63,7 @@ class SettingGUI(QDialog, qt_designer_class):
         my_window.CheckData()
         return my_window.GetData()
 
+
 if __name__ == '__main__':
     pass
     # app = QApplication(sys.argv)
@@ -73,5 +71,3 @@ if __name__ == '__main__':
     # my_window.show()
     # app.exec_()
     # my_window.CheckData()
-
-

@@ -1,6 +1,7 @@
 from typing import *
 from src.GameFunc.item.ItemTypeEnum import ItemTypeEnum
 
+
 class ItemBase:
     def __init__(self,
                  name: Optional[str] = None,
@@ -13,8 +14,8 @@ class ItemBase:
             self._status = status
         else:
             self._status = {
-                "at_point": 100, #  at ==> attack || 공격력
-                "df_point": 100, #  df ==> defense || 방어력
+                "at_point": 100,  # at ==> attack || 공격력
+                "df_point": 100,  # df ==> defense || 방어력
                 "this_status_is_test_status": 0
             }
 
