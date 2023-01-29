@@ -12,18 +12,19 @@ class PlayerMoveData:
 
         """pos_data ==> x, y를 key로 가지고 value에 int타입의 값을 가진다"""
 
-        self._moving_status = False
+        self._moving_status = False  # 움직임 상태 변수
 
-        self._x_pos = pos_data.get("x") if pos_data is not None else 0
-        self._y_pos = pos_data.get("y") if pos_data is not None else 0
+        self._x_pos = pos_data.get("x") if pos_data is not None else 0  # X좌표
+        self._y_pos = pos_data.get("y") if pos_data is not None else 0  # Y좌표
 
-        self._mv_x = mv_data.get("x") if mv_data is not None else 0
-        self._mv_y = mv_data.get("y") if mv_data is not None else 0
+        self._mv_x = mv_data.get("x") if mv_data is not None else 0  # 이전 움직임에서의 X좌표 이동량
+        self._mv_y = mv_data.get("y") if mv_data is not None else 0  # 이전 움직임에서의 Y좌표 이동량
 
         self._speed = speed if speed is not None else 1  # 테스트를 위해 속도 수정  ||  1(기존) -> 10(수정후)
 
-        self._direction = direction if direction is not None else DirectionEnum.NONE
+        self._direction = direction if direction is not None else DirectionEnum.NONE  # 이동방향
 
+    # 각각의 클래스 변수에 접근하기 위한 Getter와 Setter
     @property
     def X_Pos(self) -> int:
         return self._x_pos
