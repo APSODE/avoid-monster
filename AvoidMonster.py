@@ -9,11 +9,16 @@ PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))  # 프로젝트 �
 
 
 class AvoidMonster:
-    def __init__(self):
+    def __init__(self, debug_mode: bool = False):
         # Circular Import Exception을 방지하기 위하여 ObjectContainer의 import 타임을 runtime때 호출되도록 변경
         from src.GameFunc.container.ObjectContainer import ObjectContainer
         self._work_status = True  # 게임의 작동 상태를 나타내는 클래스 변수
-        self._object_container = ObjectContainer(root_path = PROJECT_ROOT_PATH)  # 각종 Manager를 담고있는 컨테이너 객체
+
+        # 각종 Manager를 담고있는 컨테이너 객체
+        self._object_container = ObjectContainer(
+            root_path = PROJECT_ROOT_PATH,
+            debug_mode = debug_mode
+        )
         self._screen = self._object_container.SettingManager.Screen  # 게임 화면의 Surface객체를 담고 있는 클래스 변수
         self._clock = pygame.time.Clock()  # 인게임의 시간 정보를 가지는 객체
 
@@ -54,14 +59,17 @@ class AvoidMonster:
                     self._object_container.DisplayManager.DisplayData,
                     player
                 ]
-                DisplayManager.DrawObject(
+                self._object_container.DisplayManager.DrawObject(
                     target_objects = draw_target_object,
                     screen = self._screen
                 )
 
                 self._clock.tick(60)  # 60프레임
 
+                # 변경된 사항을 실제 게임화면에 적용한다.
+                pygame.display.update()
+
 
 if __name__ == '__main__':
-    AM = AvoidMonster()  # AvoidMonster객체 생성
+    AM = AvoidMonster(debug_mode = True)  # AvoidMonster객체 생성
     AM.StartGame()  # 게임 시작
