@@ -8,7 +8,7 @@ from src.GameFunc.player.PlayerMoveData import PlayerMoveData
 class PlayerSprite(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.sprite_sf = pygame.image.load(".\\resources\\CHAR_3.png")  # sprite surface
+        self.sprite_sf = pygame.image.load(".\\resources\\player\\standing\\standing_1.png")  # sprite surface
         self.size = self.sprite_sf.get_size()
         self._sprite_num_data = {
             "s": 1,  # 멈춰있는 상태의 스프라이트 이미지 번호
