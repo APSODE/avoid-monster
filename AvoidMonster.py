@@ -1,5 +1,4 @@
 from src.GameFunc.custom_exception.AvoidMonster_CE import GameQuitException
-from src.GameFunc.display.DisplayManager import DisplayManager
 
 
 import os
@@ -71,5 +70,5 @@ class AvoidMonster:
 
 
 if __name__ == '__main__':
-    AM = AvoidMonster(debug_mode = True)  # AvoidMonster객체 생성
+    AM = AvoidMonster(debug_mode = False)  # AvoidMonster객체 생성
     AM.StartGame()  # 게임 시작
