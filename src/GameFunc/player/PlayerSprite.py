@@ -1,6 +1,7 @@
 from typing import *
 import pygame
 
+from src.GameFunc.enum.AvoidMoster_Enum import DirectionEnum
 from src.GameFunc.player.PlayerMoveData import PlayerMoveData
 
 
@@ -18,6 +19,10 @@ class PlayerSprite(pygame.sprite.Sprite):
         self._last_update_tick = 0
         self._update_delay = 25
         self._resources_dir = ".\\resources\\player\\"
+
+    @property
+    def SpriteNumData(self) -> Dict[str, int]:
+        return self._sprite_num_data
 
     def _SpriteUpdateTimeCheck(self, now_tick: int) -> bool:
         return now_tick - self._last_update_tick > self._update_delay
@@ -42,14 +47,25 @@ class PlayerSprite(pygame.sprite.Sprite):
         now_game_tick = pygame.time.get_ticks()
 
         if self._SpriteUpdateTimeCheck(now_tick = now_game_tick):
+            flip_direction = [DirectionEnum.UP_LEFT, DirectionEnum.DOWN_LEFT, DirectionEnum.LEFT]
+
             resource_dir += f"{self._sprite_num_data.get(current_sprite_num_key)}.png"
             current_sprite_image = pygame.image.load(resource_dir)
-            self.sprite_sf = pygame.transform.flip(
+            current_sprite_image = pygame.transform.flip(
                 surface = current_sprite_image,
-                flip_x = False if move_data.X_Move > 0 else True,
+                flip_x = False if move_data.Direction not in flip_direction else True,
                 flip_y = False
             )
 
+            if move_data.Direction.rt_ag != 0:
+                current_sprite_image = pygame.transform.rotate(current_sprite_image, angle = move_data.Direction.rt_ag)
+
+            self.sprite_sf = current_sprite_image
+
             self._sprite_num_data[current_sprite_num_key] += 1
             self._last_update_tick = now_game_tick
+            move_data.X_Move = 0
+            move_data.Y_Move = 0
+
+
 
